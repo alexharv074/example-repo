@@ -1,4 +1,5 @@
 require 'spec_helper'
+#require 'prime'
 
 describe 'files' do
 
@@ -21,5 +22,13 @@ describe 'files' do
       expect(content).to match /^\d+$/
     end
 
+    it "#{file} content should be between 1 and 20" do
+      expect(content.to_i).to be <= 20
+      expect(content.to_i).to be >= 1
+    end
+
+    #it "#{file} content should be a prime number" do
+    #  expect(content.to_i.prime?).to be true
+    #end
   end
 end
