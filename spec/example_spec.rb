@@ -1,5 +1,13 @@
 require 'spec_helper'
-#require 'prime'
+require 'prime'
+
+def is_perfect_square?(pos_number)
+  Math.sqrt(pos_number).to_i == Math.sqrt(pos_number)
+end
+
+def fibonacci?(n)
+  is_perfect_square?(5 * n**2 + 4) || is_perfect_square?(5 * n**2 - 4)
+end
 
 describe 'files' do
 
@@ -27,8 +35,12 @@ describe 'files' do
       expect(content.to_i).to be >= 1
     end
 
-    #it "#{file} content should be a prime number" do
-    #  expect(content.to_i.prime?).to be true
-    #end
+    it "#{file} content should be a prime number" do
+      expect(content.to_i.prime?).to be true
+    end
+
+    it "#{file} content should be a Fibonacci number" do
+      expect(fibonacci?(content.to_i)).to be true
+    end
   end
 end
